@@ -20,6 +20,7 @@
           navy: { DEFAULT: '#1f3a75', deep: '#14275a' },
           panel: '#d9d9d9',
           mint: '#eafff0',
+          'brand-muted': '#c7d2ec',
         },
         fontFamily: {
           sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
@@ -35,17 +36,17 @@
 <div class="min-h-screen rounded-tl-[45%_110px] bg-gradient-to-br from-navy to-navy-deep px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-7">
   <div class="mx-auto max-w-[960px]">
     <nav class="mb-6">
-            <a href="index.html" class="inline-flex items-center text-sm font-medium text-brand-muted hover:text-white transition-colors duration-200 group">
-                <span class="transform group-hover:-translate-x-1 transition-transform duration-200 mr-2">&larr;</span> Kembali
-            </a>
-        </nav>
+      <a href="index.html" class="inline-flex items-center text-sm font-medium text-brand-muted hover:text-white transition-colors duration-200 group">
+        <span class="transform group-hover:-translate-x-1 transition-transform duration-200 mr-2">&larr;</span> Kembali
+      </a>
+    </nav>
     <main>
       <!-- Filter & Search -->
       <section aria-label="Filter dan pencarian" class="flex flex-wrap items-start gap-6 border-b border-white/70 pb-5">
 
         <details class="group relative max-w-[300px] flex-[1_1_220px]">
           <summary class="flex cursor-pointer list-none items-center justify-between bg-panel px-3.5 py-3 text-[17px] font-bold text-navy [&::-webkit-details-marker]:hidden">
-            Rumpun Karir
+            <span>Rumpun Karir<span id="badge-rumpun"></span></span>
             <span class="transition-transform duration-200 group-open:rotate-180">&#9662;</span>
           </summary>
           <fieldset class="absolute inset-x-0 top-full z-10 mt-1.5 border-0 bg-white px-3.5 py-2.5 text-navy shadow-xl">
@@ -63,15 +64,15 @@
 
         <div class="flex-[2_1_320px] bg-panel focus-within:ring-[3px] focus-within:ring-white/50">
           <label for="cari" class="sr-only">Cari Template</label>
-          <input type="search" id="cari" name="cari" placeholder="Cari Template.."
+          <input type="search" id="cari" name="cari" placeholder="Cari Template.." autocomplete="off"
                  class="w-full border-0 bg-transparent px-3.5 py-3 text-[17px] font-bold text-navy outline-none placeholder:text-navy placeholder:opacity-100">
         </div>
       </section>
 
       <!-- Katalog Template -->
-      <section aria-label="Katalog template" class="mt-9 grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-7">
+      <section id="katalog" aria-label="Katalog template" class="mt-9 grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-7">
 
-        <article class="bg-panel px-[18px] pb-3.5 pt-[18px]">
+        <article data-card data-rumpun="pemasaran" data-cari="template modern pemasaran" class="bg-panel px-[18px] pb-3.5 pt-[18px]">
           <figure class="m-0 flex aspect-[2/3] items-center justify-center bg-mint text-center text-[13px] text-[#6b8f78]">
             <pre class="m-0 whitespace-pre-line font-[inherit]">Pratinjau
 Template</pre>
@@ -86,7 +87,7 @@ Template</pre>
           </div>
         </article>
 
-        <article class="bg-panel px-[18px] pb-3.5 pt-[18px]">
+        <article data-card data-rumpun="keuangan" data-cari="template klasik keuangan" class="bg-panel px-[18px] pb-3.5 pt-[18px]">
           <figure class="m-0 flex aspect-[2/3] items-center justify-center bg-mint text-center text-[13px] text-[#6b8f78]">
             <pre class="m-0 whitespace-pre-line font-[inherit]">Pratinjau
 Template</pre>
@@ -101,7 +102,7 @@ Template</pre>
           </div>
         </article>
 
-        <article class="bg-panel px-[18px] pb-3.5 pt-[18px]">
+        <article data-card data-rumpun="it" data-cari="template teknis it" class="bg-panel px-[18px] pb-3.5 pt-[18px]">
           <figure class="m-0 flex aspect-[2/3] items-center justify-center bg-mint text-center text-[13px] text-[#6b8f78]">
             <pre class="m-0 whitespace-pre-line font-[inherit]">Pratinjau
 Template</pre>
@@ -118,11 +119,65 @@ Template</pre>
 
       </section>
 
-      <p class="mt-8 text-center text-sm font-semibold">Menampilkan 3 dari 24 template &mdash; scroll untuk melihat lebih banyak</p>
+      <!-- Keadaan kosong (muncul jika tidak ada hasil) -->
+      <div id="kosong" hidden class="mt-9 bg-white/10 px-6 py-10 text-center">
+        <p class="m-0 text-base font-bold">Template tidak ditemukan</p>
+        <p class="mb-4 mt-1 text-sm text-brand-muted">Coba kata kunci lain atau hapus filter rumpun karir.</p>
+        <button id="reset" type="button" class="cursor-pointer border border-white bg-transparent px-4 py-1.5 text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-navy">Reset pencarian</button>
+      </div>
+
+      <p id="catatan" aria-live="polite" class="mt-8 text-center text-sm font-semibold">Menampilkan 3 dari 24 template &mdash; scroll untuk melihat lebih banyak</p>
     </main>
 
   </div>
 </div>
+
+<script>
+  const input   = document.getElementById('cari');
+  const cards   = [...document.querySelectorAll('[data-card]')];
+  const checks  = [...document.querySelectorAll('input[name="rumpun"]')];
+  const catatan = document.getElementById('catatan');
+  const kosong  = document.getElementById('kosong');
+  const badge   = document.getElementById('badge-rumpun');
+  const resetBtn = document.getElementById('reset');
+  const catatanAwal = catatan.textContent;
+
+  // Huruf kecil + hilangkan aksen supaya pencarian tidak sensitif
+  const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+  function terapkan() {
+    const kata    = norm(input.value).split(/\s+/).filter(Boolean);
+    const dipilih = checks.filter((c) => c.checked).map((c) => c.value);
+    let tampil = 0;
+
+    cards.forEach((card) => {
+      const cocokKata   = kata.every((k) => card.dataset.cari.includes(k));
+      const cocokRumpun = dipilih.length === 0 || dipilih.includes(card.dataset.rumpun);
+      const lolos = cocokKata && cocokRumpun;
+      card.hidden = !lolos;
+      if (lolos) tampil++;
+    });
+
+    const aktif = kata.length > 0 || dipilih.length > 0;
+    badge.textContent = dipilih.length ? ' (' + dipilih.length + ')' : '';
+    kosong.hidden = tampil !== 0;
+    catatan.textContent = !aktif
+      ? catatanAwal
+      : tampil === 0
+        ? 'Tidak ada template yang cocok'
+        : 'Menampilkan ' + tampil + ' template yang cocok';
+  }
+
+  input.addEventListener('input', terapkan);
+  input.addEventListener('search', terapkan); // tombol "x" bawaan kolom search
+  checks.forEach((c) => c.addEventListener('change', terapkan));
+  resetBtn.addEventListener('click', () => {
+    input.value = '';
+    checks.forEach((c) => (c.checked = false));
+    terapkan();
+    input.focus();
+  });
+</script>
 
 </body>
 </html>
