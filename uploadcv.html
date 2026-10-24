@@ -24,7 +24,7 @@
     <!-- Header Navigation -->
     <header class="p-4 relative z-20">
         <nav aria-label="Navigasi halaman">
-            <a href="index.html" class="inline-flex items-center text-gray-300 hover:text-white transition-colors text-sm font-medium">
+            <a href="index.html" class="inline-flex items-center text-gray-300 hover:text-white transition-colors text-2xl font-medium">
                 &larr; Kembali
             </a>
         </nav>
@@ -32,27 +32,27 @@
 
     <main class="flex-grow flex items-center justify-center p-4 relative overflow-hidden">
         <!-- Hero Section -->
-        <section id="beranda" class="w-full max-w-5xl bg-[#1d2b4e] rounded-2xl p-6 md:p-10 relative overflow-hidden shadow-2xl border border-slate-700/50">
+        <section id="beranda" class="w-full max-w-[60%] bg-[#1d2b4e] rounded-2xl p-12 md:p-10 relative overflow-hidden shadow-2xl border border-slate-700/50 space-y-8">
             
             <!-- Latar Kurva Biru Terang (Visual Shape) -->
             <div class="absolute -top-24 -left-24 w-[500px] h-[500px] md:w-[650px] md:h-[650px] bg-[#2b427c] rounded-full pointer-events-none -z-0 opacity-80"></div>
 
             <!-- Konten Utama Center -->
-            <div class="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
+            <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
                 
-                <h1 class="text-xl md:text-2xl font-bold tracking-wide text-white mb-1">
+                <h1 class="text-xl md:text-3xl font-bold tracking-wide text-white mb-1">
                     Analisis CV Untuk Target Kerja
                 </h1>
 
-                <p class="text-xs text-gray-300 font-mono tracking-widest my-2">
+                <p class="text-md text-gray-300 font-mono tracking-widest my-2">
                     ---CEK SEBELUM DIKIRIM---
                 </p>
                 
-                <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-3 uppercase">
+                <h2 class="text-4xl md:text-3xl font-extrabold tracking-tight text-white mb-3 uppercase">
                     LIHAT APA YANG DILIHAT MESIN
                 </h2>
 
-                <p class="text-xs md:text-sm text-gray-200 max-w-xl leading-relaxed mb-6">
+                <p class="text-md md:text-xl text-gray-200 max-w-xl leading-relaxed mb-6">
                     Sebelum satu kata dibaca perekrut, Software memecah CV-mu menjadi kolom kolom data, Lepas PDFnya dan lihat proses itu terjadi -- sekitar tiga detik
                 </p>
 
@@ -95,9 +95,11 @@
 
                     <!-- Tombol Action / Submit -->
                     <div class="pt-2">
-                        <a href="CV_Analysis_Results.html" class="inline-block w-full bg-[#091124] hover:bg-[#050a15] text-white font-bold py-3 px-6 rounded-md transition-colors text-sm shadow-md border border-slate-700">
+                    <!-- Tombol Action / Submit (Kode Baru dengan Trigger Klik) -->
+                        <button type="button" onclick="handleStartAnalysis()" class="w-full bg-[#091124] hover:bg-[#050a15] text-white font-bold py-3 px-6 rounded-md transition-colors text-sm shadow-md border border-slate-700 cursor-pointer">
                             Mulai Analisis CV
-                        </a>
+                        </button>
+
                     </div>
 
                 </div>
@@ -113,24 +115,26 @@
 
             <!-- Popover Modal Peringatan -->
             <section id="summary-popup" popover class="m-auto p-0 bg-transparent backdrop:bg-black/60 border-none outline-none">
-                <div class="bg-[#091026] text-white p-6 md:p-8 rounded-lg border border-blue-900/50 max-w-sm md:max-w-md w-full shadow-2xl relative text-center flex flex-col items-center">
+                <div class="bg-[#091026] text-white p-8 md:p-10 rounded-2xl border border-blue-900/50 max-w-lg md:max-w-xl w-full shadow-2xl relative text-center flex flex-col items-center">
                     
                     <!-- Close Button -->
-                    <button type="button" popovertarget="summary-popup" popovertargetaction="hide" aria-label="Tutup" class="absolute top-3 right-3 text-gray-400 hover:text-white font-bold text-sm w-6 h-6 flex items-center justify-center">
+                    <button type="button" popovertarget="summary-popup" popovertargetaction="hide" aria-label="Tutup" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-lg w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
                         ✕
                     </button>
 
-                    <!-- Ilustrasi Peringatan / Robot -->
-                    <figure class="mb-4">
-                        <img src="/assets/images/!!!.png" alt="Ilustrasi robot peringatan kesalahan format file" class="w-20 h-20 object-contain mx-auto">
+                    <!-- Ilustrasi Peringatan / Robot (Sekarang Bebas Membesar) -->
+                    <figure class="mb-6 w-full flex justify-center">
+                        <img src="/assets/images/!!!.png" alt="Ilustrasi robot peringatan kesalahan format file" class="w-48 h-48 md:w-56 md:h-56 object-contain mx-auto drop-shadow-lg">
                     </figure>
-            
-                    <a class="block font-black text-sm md:text-base leading-snug tracking-wide text-white uppercase mb-6 px-2">
-                        FORMAT FILE TIDAK SESUAI, HARAP UNGGAH FILE BERFORMAT .PDF DENGAN UKURAN MAKS 5MB!!!
-                    </a>
 
+                    <!-- Teks Peringatan -->
+                    <p class="font-black text-base md:text-lg leading-relaxed tracking-wide text-white uppercase mb-8 px-4">
+                        FORMAT FILE TIDAK SESUAI, HARAP UNGGAH FILE BERFORMAT .PDF DENGAN UKURAN MAKS 5MB!!!
+                    </p>
+
+                    <!-- Tombol Lanjutkan -->
                     <div class="w-full">
-                        <a href="utama.html" class="inline-block w-full bg-white text-gray-900 font-bold py-2 px-6 rounded hover:bg-gray-200 transition-colors text-sm">
+                        <a href="utama.html" class="inline-block w-full bg-white text-gray-900 font-extrabold py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors text-base shadow-md">
                             Lanjutkan
                         </a>
                     </div>
@@ -150,5 +154,16 @@
         <p>&copy; 2026 LolosATS.id</p>
     </footer>
 
+<!-- Script Pendukung -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Pastikan baris ini berada di dalam tag script yang benar
+        lucide.createIcons();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/cvUpload.js"></script>
+</body>
+</html>
 </body>
 </html>
