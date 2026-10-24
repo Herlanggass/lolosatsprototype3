@@ -49,13 +49,93 @@ async function uploadAndScanCV(fileInputId) {
     }
 }
 
-// js/cvUpload.js
+// ===== Loading state: jembatan antara halaman upload dan halaman hasil =====
+const HASIL_URL = "CV_Analysis_Results.html";
+const MIN_LOADING_MS = 3000;    // loading tampil minimal segini supaya tidak berkedip
+const REDIRECT_DELAY_MS = 500;  // jeda singkat di 100% sebelum pindah halaman
+
+const LANGKAH_LOADING = [
+    { batas: 30,  teks: "Mengunggah CV-mu..." },
+    { batas: 60,  teks: "Membaca struktur dokumen..." },
+    { batas: 90,  teks: "Mencocokkan kata kunci dengan posisi target..." },
+    { batas: 100, teks: "Menyusun hasil analisis..." }
+];
+
+let loadingTimer = null;
+
+function jeda(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function setProgress(persen) {
+    const nilai = Math.round(persen);
+    const langkah = LANGKAH_LOADING.find((l) => nilai <= l.batas) || LANGKAH_LOADING[LANGKAH_LOADING.length - 1];
+    const teksLangkah = document.getElementById('loading-langkah');
+
+    document.getElementById('loading-bar').style.width = nilai + '%';
+    document.getElementById('loading-persen').textContent = nilai + '%';
+    document.getElementById('loading-track').setAttribute('aria-valuenow', nilai);
+
+    // Teks hanya diganti jika berubah, agar pembaca layar tidak membacakan ulang terus-menerus
+    if (teksLangkah.textContent !== langkah.teks) {
+        teksLangkah.textContent = langkah.teks;
+    }
+}
+
+function tampilkanLoading() {
+    const overlay = document.getElementById('loading-overlay');
+    overlay.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    overlay.focus();
+
+    let progres = 0;
+    setProgress(progres);
+
+    // Progres berjalan melambat mendekati 90%. Sisanya diisi saat proses benar-benar selesai.
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(() => {
+        progres += (90 - progres) * 0.09;
+        setProgress(progres);
+    }, 100);
+}
+
+function sembunyikanLoading() {
+    clearInterval(loadingTimer);
+    loadingTimer = null;
+    document.getElementById('loading-overlay').classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+}
+
+async function selesaikanLoading(waktuMulai) {
+    const sisa = MIN_LOADING_MS - (Date.now() - waktuMulai);
+    if (sisa > 0) await jeda(sisa);
+
+    clearInterval(loadingTimer);
+    loadingTimer = null;
+    setProgress(100);
+    await jeda(REDIRECT_DELAY_MS);
+}
+
+function resetTombolAnalisis() {
+    const tombol = document.getElementById('btn-mulai-analisis');
+    tombol.disabled = false;
+    tombol.textContent = "Mulai Analisis CV";
+}
+
+// Jika pengguna menekan tombol "back" dari halaman hasil, browser bisa memulihkan
+// halaman ini dari cache (bfcache) dengan loading yang masih terbuka. Reset di sini.
+window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+        sembunyikanLoading();
+        resetTombolAnalisis();
+    }
+});
 
 async function handleStartAnalysis() {
     const fileInput = document.getElementById('cv-upload');
     const file = fileInput.files[0];
     const posisiPekerjaan = document.getElementById('posisi-pekerjaan').value;
-    const submitBtn = event.target; // Mengambil elemen tombol yang diklik
+    const submitBtn = document.getElementById('btn-mulai-analisis');
 
     // 1. Validasi File
     if (!file) {
@@ -86,11 +166,13 @@ async function handleStartAnalysis() {
     const fileExt = file.name.split('.').pop();
     const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
     const filePath = `uploads/${fileName}`;
+    const waktuMulai = Date.now();
 
     try {
-        // Ubah teks tombol jadi indikator loading agar user tahu sistem sedang bekerja
+        // Cegah klik ganda, lalu tampilkan loading di atas halaman upload
         submitBtn.disabled = true;
         submitBtn.textContent = "Sedang Mengunggah & Menganalisis...";
+        tampilkanLoading();
 
         // Proses Upload ke Supabase
         const { data: uploadData, error: uploadError } = await supabaseClient.storage
@@ -104,19 +186,17 @@ async function handleStartAnalysis() {
             .getPublicUrl(filePath);
 
         console.log("File berhasil diunggah:", publicUrlData.publicUrl);
-        
-        // Notifikasi Berhasil sebelum pindah halaman
-        alert("CV Berhasil Diunggah! Memulai analisis...");
 
-        // Pindah ke halaman hasil analisis
-        window.location.href = "CV_Analysis_Results.html";
+        // Loading dituntaskan (100%) lalu pindah ke halaman hasil analisis
+        await selesaikanLoading(waktuMulai);
+        window.location.href = HASIL_URL;
 
     } catch (error) {
         console.error("Gagal mengunggah file:", error.message);
+
+        // Tutup loading dan kembalikan tombol ke semula, baru tampilkan pesan error
+        sembunyikanLoading();
+        resetTombolAnalisis();
         alert("Gagal mengunggah file ke server: " + error.message);
-        
-        // Kembalikan tombol ke semula jika gagal
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Mulai Analisis CV";
     }
 }
