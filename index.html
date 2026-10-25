@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LolosATS.id - Cek Skor ATS CV-mu</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,80 +22,83 @@
             }
         }
     </script>
+    <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased flex flex-col min-h-screen text-2xl">
+<body class="bg-slate-100 text-slate-800 antialiased flex flex-col min-h-screen">
 
-    <!-- Header / Navbar Desktop  -->
-    <header class="bg-brand-dark text-white sticky top-0 z-50 shadow-md w-full px-16">
-        <nav aria-label="Navigasi Utama" class="w-full px-12 sm:px-32 py-8 flex items-center justify-between">
-            <a href="./index.html" class="flex items-center gap-4">
-                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">LolosATS.id</span>
+    <!-- Header / Navbar Desktop (Sangat Rapi & Menyebar Pas) -->
+    <header class="bg-brand-dark text-white sticky top-0 z-50 shadow-md w-full">
+        <nav aria-label="Navigasi Utama" class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between w-full">
+            <!-- Logo Brand -->
+            <a href="./index.html" class="flex items-center gap-2">
+                <span class="text-2xl font-bold tracking-tight text-white">LolosATS.id</span>
             </a>
 
-            <!-- Menu Navigasi Tengah (2x Besar) -->
-            <ul class="hidden md:flex items-center space-x-16 text-2xl sm:text-4xl font-semibold">
+            <!-- Menu Navigasi Tengah -->
+            <ul class="hidden md:flex items-center space-x-10 text-lg font-medium">
                 <li><a href="#beranda" class="hover:text-blue-300 transition-colors">Beranda</a></li>
                 <li><a href="#cara-kerja" class="hover:text-blue-300 transition-colors">Cara Kerja</a></li>
                 <li><a href="#fitur" class="hover:text-blue-300 transition-colors">Fitur</a></li>
                 <li><a href="#template-ats" class="hover:text-blue-300 transition-colors">Template ATS</a></li>
             </ul>
 
-            <div class="flex items-center space-x-8">
-                <a href="/daftar.html" class="px-10 py-4 rounded-full text-3xl font-bold bg-white text-brand-dark hover:bg-slate-100 transition-all shadow-md">Daftar</a>
-                <a href="/login.html" class="px-10 py-4 rounded-full text-3xl font-bold bg-brand-blue text-white hover:bg-blue-800 transition-all border-2 border-slate-500">Masuk</a>
+            <!-- Auth Buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="/daftar.html" class="px-6 py-2.5 rounded-full text-lg font-semibold bg-white text-brand-dark hover:bg-slate-100 transition-all shadow-sm">Daftar</a>
+                <a href="/login.html" class="px-6 py-2.5 rounded-full text-lg font-semibold bg-brand-blue text-white hover:bg-blue-800 transition-all border border-slate-600">Masuk</a>
             </div>
         </nav>
     </header>
 
-    <main class="flex-grow w-full">
-        <!-- Hero Section (Skala 2x) -->
-        <section id="beranda" class="relative bg-slate-200/80 py-20 lg:py-28 overflow-hidden w-full">
-            <div class="w-full px-8 sm:px-16">
+    <main class="flex-grow">
+        <!-- Hero Section (Ukurannya Pas Memenuhi Layar Seperti Gambar 1) -->
+        <section id="beranda" class="relative bg-slate-200/80 py-12 lg:py-16 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
                 
-                <!-- Judul & Sub-judul Utama (2x Besar) -->
-                <div class="text-center max-w-7xl mx-auto mb-16">
-                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-extrabold text-brand-dark leading-tight tracking-tight">
+                <!-- Judul & Sub-judul Utama (Besar, Bold, & Jelas) -->
+                <div class="text-center max-w-4xl mx-auto mb-10">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight tracking-tight">
                         Cek Skor ATS CV-mu Dalam Bahasa Indonesia Secara Lengkap
                     </h1>
-                    <p class="mt-8 text-slate-600 text-2xl sm:text-3xl max-w-4xl mx-auto leading-relaxed font-semibold">
+                    <p class="mt-5 text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
                         Ketahui kelemahan CV-mu, optimalkan kata kunci pekerjaan, dan tingkatkan peluang dipanggil interview tanpa kendala bahasa.
                     </p>
                 </div>
 
                 <!-- Content Grid (Form Upload + Robot Visual) -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center w-full px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
                     
-                    <!-- Sisi Kiri: Form Dropzone & Button CTA (2x Besar) -->
-                    <div class="lg:col-span-5 lg:col-start-3 flex flex-col items-center lg:items-stretch">
+                    <!-- Sisi Kiri: Form Dropzone & Button CTA -->
+                    <div class="lg:col-span-8 flex flex-col items-center lg:items-stretch">
                         <form class="w-full">
-                            <fieldset class="border-4 border-dashed border-slate-400/80 bg-slate-300/40 hover:bg-slate-300/60 rounded-3xl p-12 sm:p-32 text-center cursor-pointer transition-all w-full">
+                            <fieldset class="border-2 border-dashed border-slate-400/80 bg-slate-300/40 hover:bg-slate-300/60 rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all w-full">
                                 <legend class="sr-only">Unggah CV-mu Disini</legend>
-                                <input type="file" id="cv-upload" accept=".pdf,.docx" class="hidden" onchange="uploadAndScanCV('cv-upload')">
-                                <label for="cv-upload" class="cursor-pointer flex flex-col items-center justify-center space-y-6">
-                                    <svg class="w-24 h-24 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <input type="file" id="cv-upload" accept=".pdf,.docx" class="hidden">
+                                <label for="cv-upload" class="cursor-pointer flex flex-col items-center justify-center space-y-3">
+                                    <svg class="w-14 h-14 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                                     </svg>
-                                    <span class="text-3xl sm:text-4xl font-extrabold text-slate-800">Unggah CV-mu Disini</span>
-                                    <span class="text-xl sm:text-2xl text-slate-600 font-medium">Seret dan letakkan file CV atau telusuri perangkat (.pdf, .docx)</span>
+                                    <span class="text-2xl font-bold text-slate-800">Unggah CV-mu Disini</span>
+                                    <span class="text-base text-slate-500 font-medium">Seret dan letakkan file CV atau telusuri perangkat (.pdf, .docx)</span>
                                 </label>
                             </fieldset>
                         </form>
 
-                        <div class="mt-12 text-center lg:text-left">
-                            <a href="uploadcv.html" class="inline-block px-14 py-8 bg-brand-blue text-white font-extrabold rounded-2xl shadow-xl hover:bg-opacity-90 hover:scale-105 transition-all text-2xl sm:text-3xl">
+                        <div class="mt-8 text-center lg:text-left">
+                            <a href="#cek-gratis" class="inline-block px-8 py-4 bg-brand-blue text-white font-bold rounded-xl shadow-lg hover:bg-opacity-90 hover:scale-105 transition-all text-lg sm:text-xl">
                                 Cek CV Gratis Sekarang
                             </a>
                         </div>
                     </div>
 
-                    <!-- Sisi Kanan: Ilustrasi Robot Maskot (Tinggi Diperbesar 2x ~ 650px) -->
+                    <!-- Sisi Kanan: Ilustrasi Robot Maskot -->
                     <div class="lg:col-span-4 flex justify-center">
-                        <img src="./assets/images/Hero.webp" alt="Maskot robot asisten LolosATS.id" class="w-full sm:w-[480px] lg:w-[650px] h-autoo object-contain drop-shadow-2xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x600?text=Robot+Maskot'">
+                        <img src="./assets/images/Hero.webp" alt="Maskot robot asisten LolosATS.id" class="max-h-[380px] w-auto object-contain drop-shadow-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/350x400?text=Robot+Maskot'">
                     </div>
 
                 </div>
@@ -102,52 +106,48 @@
             </div>
         </section>
 
-        <!-- Section Cara Kerja / 3 Langkah Mudah (2x Besar) -->
-        <section id="cara-kerja" class="py-28 bg-slate-200/60 w-full">
-            <div class="w-full px-8 sm:px-16">
-                <h2 class="text-4xl sm:text-6xl font-extrabold text-center text-brand-dark mb-20">
+        <!-- Section Cara Kerja / 3 Langkah Mudah -->
+        <section id="cara-kerja" class="py-20 bg-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-brand-dark mb-12">
                     3 Langkah Mudah Optimasi CV
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 sm:px-64">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Langkah 1 -->
-                    <!-- Kartu 1 (Lebih Tinggi, Lega & Gagah) -->
-                    <article class="bg-brand-blue text-white p-14 sm:p-16 min-h-[480px] rounded-3xl shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between">
+                    <article class="bg-brand-blue text-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
                         <div>
-                            <!-- Pembungkus Ikon (Diperbesar) -->
-                            <div class="mb-10 inline-block p-4 bg-white/10 rounded-2xl text-white pt-8">
-                                <i data-lucide="file-up" class="w-20 h-20"></i>
+                            <div class="mb-6 inline-block p-3 bg-white/10 rounded-xl text-white">
+                                <i data-lucide="file-up" class="w-10 h-10"></i>
                             </div>
-                            
-                            <!-- Judul & Deskripsi -->
-                            <h3 class="text-3xl sm:text-4xl font-bold mb-6 leading-snug pb-3">Upload CV dengan format docx atau pdf</h3>
-                            <p class="text-slate-100 text-3xl leading-relaxed pb-16">
+                            <h3 class="text-2xl font-bold mb-3 leading-snug">Upload CV dengan format docx atau pdf</h3>
+                            <p class="text-slate-100 text-lg leading-relaxed">
                                 Unggah dokumen lamaranmu dengan mudah dan cepat tanpa batasan ukuran file yang rumit.
                             </p>
                         </div>
                     </article>
 
                     <!-- Langkah 2 -->
-                    <article class="bg-brand-blue text-white p-12 sm:p-14 rounded-3xl shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between">
+                    <article class="bg-brand-blue text-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
                         <div>
-                            <div class="mb-10 inline-block p-5 bg-white/10 rounded-2xl text-white pt-8">
-                                <i data-lucide="chart-pie" class="w-16 h-16"></i>
+                            <div class="mb-6 inline-block p-3 bg-white/10 rounded-xl text-white">
+                                <i data-lucide="chart-pie" class="w-10 h-10"></i>
                             </div>
-                            <h3 class="text-3xl sm:text-4xl font-bold mb-4 pb-3 leading-snug">Analisis sistem cek format & kata kunci</h3>
-                            <p class="text-slate-100 text-3xl leading-relaxed">
+                            <h3 class="text-2xl font-bold mb-3 leading-snug">Analisis sistem cek format & kata kunci</h3>
+                            <p class="text-slate-100 text-lg leading-relaxed">
                                 Sistem otomatis memindai struktur dokumen serta kecocokan kata kunci agar lolos ATS.
                             </p>
                         </div>
                     </article>
 
                     <!-- Langkah 3 -->
-                    <article class="bg-brand-blue text-white p-12 sm:p-14 rounded-3xl shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between">
+                    <article class="bg-brand-blue text-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
                         <div>
-                            <div class="mb-10 inline-block p-5 bg-white/10 rounded-2xl text-white pt-8">
-                                <i data-lucide="thumbs-up" class="w-16 h-16"></i>
+                            <div class="mb-6 inline-block p-3 bg-white/10 rounded-xl text-white">
+                                <i data-lucide="thumbs-up" class="w-10 h-10"></i>
                             </div>
-                            <h3 class="text-3xl sm:text-4xl font-bold mb-4 leading-snug pb-3">Dapatkan rekomendasi dan saran berbahasa indonesia</h3>
-                            <p class="text-slate-100 text-3xl leading-relaxed">
+                            <h3 class="text-2xl font-bold mb-3 leading-snug">Dapatkan rekomendasi dan saran berbahasa indonesia</h3>
+                            <p class="text-slate-100 text-lg leading-relaxed">
                                 Terima masukan perbaikan yang jelas, terarah, dan mudah dipahami untuk mendongkrak kualitas CV-mu.
                             </p>
                         </div>
@@ -156,63 +156,63 @@
             </div>
         </section>
 
-        <!-- Section Berita / Artikel (2x Besar) -->
-        <section id="fitur" class="py-28 bg-white w-full">
-            <div class="w-full px-8 sm:px-16">
-                <h2 class="text-4xl sm:text-6xl font-extrabold text-center text-brand-dark mb-24">
+        <!-- Section Berita / Artikel -->
+        <section id="fitur" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-brand-dark mb-12">
                     Berita & Tips Karier Terbaru
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-64">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Artikel 1 -->
-                    <article class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow flex flex-col">
-                        <img src="./assets/images/berita1.webp" alt="Ilustrasi artikel tips lolos ATS" class="w-full h-80 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Artikel+1'">
-                        <div class="p-10 flex flex-col flex-grow justify-between">
+                    <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <img src="./assets/images/berita1.webp" alt="Ilustrasi artikel tips lolos ATS" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x300?text=Artikel+1'">
+                        <div class="p-8 flex flex-col flex-grow justify-between">
                             <div>
-                                <h3 class="text-2xl sm:text-4xl font-bold text-slate-900 mb-4 leading-snug hover:text-brand-blue transition-colors py-4">
+                                <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug hover:text-brand-blue transition-colors">
                                     Strategi Ampuh Menulis Ringkasan Profesional di CV Agar Dilirik HRD
                                 </h3>
-                                <p class="text-slate-600 text-xl sm:text-3xl mb-8 leading-relaxed">
+                                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
                                     Pelajari cara merangkum pengalaman kerja terbaikmu dalam tiga kalimat padat yang memikat perekrut.
                                 </p>
                             </div>
-                            <a href="https://radartv.disway.id/ragam/read/36491/cv-kamu-tak-kunjung-dilirik-hrd-ini-tujuh-tips-membuat-cv-ats-friendly-agar-lolos-seleksi" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-3xl hover:underline inline-flex items-center gap-2">
+                            <a href="https://radartv.disway.id/ragam/read/36491/cv-kamu-tak-kunjung-dilirik-hrd-ini-tujuh-tips-membuat-cv-ats-friendly-agar-lolos-seleksi" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-lg hover:underline inline-flex items-center gap-1">
                                 Baca Selengkapnya &rarr;
                             </a>
                         </div>
                     </article>
 
                     <!-- Artikel 2 -->
-                    <article class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow flex flex-col">
-                        <img src="./assets/images/berita2.webp" alt="Ilustrasi artikel kesalahan umum CV" class="w-full h-80 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Artikel+2'">
-                        <div class="p-10 flex flex-col flex-grow justify-between">
+                    <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <img src="./assets/images/berita2.webp" alt="Ilustrasi artikel kesalahan umum CV" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x300?text=Artikel+2'">
+                        <div class="p-8 flex flex-col flex-grow justify-between">
                             <div>
-                                <h3 class="text-2xl sm:text-4xl py-4 font-bold text-slate-900 mb-4 leading-snug hover:text-brand-blue transition-colors">
+                                <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug hover:text-brand-blue transition-colors">
                                     5 Kesalahan Format CV yang Sering Membuat Gagal Lolos Sistem ATS
                                 </h3>
-                                <p class="text-slate-600 text-xl sm:text-3xl mb-8 leading-relaxed">
+                                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
                                     Hindari penggunaan tabel kompleks dan kolom ganda yang kerap mengecoh mesin pembaca otomatis.
                                 </p>
                             </div>
-                            <a href="https://glints.com/id/lowongan/kesalahan-membuat-cv/" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-3xl hover:underline inline-flex items-center gap-2">
+                            <a href="https://glints.com/id/lowongan/kesalahan-membuat-cv/" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-lg hover:underline inline-flex items-center gap-1">
                                 Baca Selengkapnya &rarr;
                             </a>
                         </div>
                     </article>
 
                     <!-- Artikel 3 -->
-                    <article class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow flex flex-col">
-                        <img src="./assets/images/berita3.webp" alt="Ilustrasi artikel tren dunia kerja" class="w-full h-80 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Artikel+3'">
-                        <div class="p-10 flex flex-col flex-grow justify-between">
+                    <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <img src="./assets/images/berita3.webp" alt="Ilustrasi artikel tren dunia kerja" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x300?text=Artikel+3'">
+                        <div class="p-8 flex flex-col flex-grow justify-between">
                             <div>
-                                <h3 class="text-2xl sm:text-4xl py-4 font-bold text-slate-900 mb-4 leading-snug hover:text-brand-blue transition-colors">
+                                <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug hover:text-brand-blue transition-colors">
                                     Tren Kata Kunci Industri Kreatif dan Teknologi yang Paling Dicari Tahun Ini
                                 </h3>
-                                <p class="text-slate-600 text-xl sm:text-3xl mb-8 leading-relaxed">
+                                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
                                     Sesuaikan istilah teknis dalam lembar riwayat hidup Anda dengan standar rekrutmen perusahaan modern.
                                 </p>
                             </div>
-                            <a href="https://digital.okezone.com/detail/774861/3-tren-dunia-kerja-di-tahun-2022" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-3xl hover:underline inline-flex items-center gap-2">
+                            <a href="https://digital.okezone.com/detail/774861/3-tren-dunia-kerja-di-tahun-2022" target="_blank" rel="noopener noreferrer" class="text-brand-blue font-bold text-lg hover:underline inline-flex items-center gap-1">
                                 Baca Selengkapnya &rarr;
                             </a>
                         </div>
@@ -221,23 +221,23 @@
             </div>
         </section>
 
-        <!-- Section CTA (Skala 2x) -->
-        <section class="bg-brand-blue text-white py-28 w-full">
-            <div class="w-full px-8 sm:px-16">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+        <!-- Section CTA (Call to Action Banner) -->
+        <section class="bg-brand-blue text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <!-- Sisi Kiri: Grid Preview Template CV -->
                     <div class="lg:col-span-5 flex justify-center">
-                        <img src="./assets/images/contoh.png" alt="Pratinjau koleksi template CV profesional" class="w-full max-w-4xl rounded-2xl object-cover pl-8" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x450?text=Grid+Template+CV'">
+                        <img src="./assets/images/contoh.png" alt="Pratinjau koleksi template CV profesional" class="w-full max-w-md rounded-lg shadow-2xl object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=Grid+Template+CV'">
                     </div>
 
                     <!-- Sisi Kanan: Penjelasan CTA & Tombol Masuk -->
-                    <div class="lg:col-span-7 space-y-8">
-                        <h2 class="text-4xl sm:text-7xl font-extrabold uppercase tracking-wide text-white pt-16">LolosATS.id</h2>
-                        <p class="text-slate-100 text-3xl sm:text-4xl leading-relaxed py-12">
+                    <div class="lg:col-span-7 space-y-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-wide text-white">LolosATS.id</h2>
+                        <p class="text-slate-100 text-lg sm:text-xl leading-relaxed">
                             Yuk, buat akun sekarang! Kamu bisa memantau history pengecekan CV secara berkala dan melihat perkembangannya dari waktu ke waktu. Selain itu, kamu juga berhak mengunduh berbagai pilihan template CV profesional secara gratis setelah masuk ke akunmu!
                         </p>
-                        <div class="pt-4">
-                            <a href="login.html" class="inline-block px-24 py-6 bg-white text-brand-dark font-extrabold rounded-2xl shadow hover:bg-slate-100 transition-all text-2xl sm:text-3xl">
+                        <div class="pt-2">
+                            <a href="login.html" class="inline-block px-8 py-4 bg-white text-brand-dark font-bold rounded-lg shadow hover:bg-slate-100 transition-all text-lg">
                                 Masuk
                             </a>
                         </div>
@@ -245,74 +245,102 @@
                 </div>
             </div>
         </section>
+
+          <section id="riwayat" class="py-16 bg-white">
+    <h2 class="text-3xl font-extrabold text-center text-brand-dark mb-8">Riwayat Pengecekan</h2>
+    <ul id="daftar-riwayat" class="max-w-3xl mx-auto px-4 space-y-3"></ul>
+</section>
+        
     </main>
 
-        <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-24 pb-12 border-t border-slate-800 w-full">
-        <div class="w-full px-12 sm:px-20 lg:px-28 mx-auto">
-
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-16 mb-16">
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <h2 class="sr-only">Bagian Informasi dan Tautan Footer</h2>
                 
-                <!-- Sisi Kiri: Brand & Deskripsi (Diperbesar 2-3 kali lipat ukurannya) -->
-                <div class="space-y-6 max-w-3xl">
-                    <span class="text-5xl sm:text-6xl font-extrabold tracking-wider block">LolosATS.id</span>
-                    <p class="text-slate-300 text-2xl sm:text-3xl leading-relaxed">
-                        Platform pengecekan CV berbasis AI untuk membantumu lolos seleksi kerja dengan mudah dan cepat.
+                <!-- Kolom 1: About Brand -->
+                <article class="space-y-3">
+                    <h3 class="text-2xl font-bold tracking-tight text-white">LolosATS.id</h3>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Platform online analisis CV berbasis AI berbahasa Indonesia.
                     </p>
-                </div>
+                </article>
+                
+                <!-- Kolom 2: Navigasi Utama -->
+                <nav aria-label="Navigasi Utama Footer" class="space-y-3">
+                    <h4 class="text-lg font-semibold text-white">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-lg text-slate-300">
+                        <li><a href="#beranda" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="#cara-kerja" class="hover:text-white transition-colors">Cara Kerja</a></li>
+                        <li><a href="#fitur" class="hover:text-white transition-colors">Fitur Unggulan</a></li>
+                    </ul>
+                </nav>
 
-                <!-- Sisi Kanan: Kumpulan Tautan / Navigasi (Diperbesar ukuran teks & jaraknya) -->
-                <div class="flex flex-wrap gap-16 sm:gap-64">
-                    <!-- Grup Menu 1 -->
-                    <div class="space-y-6">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Navigasi Utama</h3>
-                        <ul class="space-y-4 text-slate-300 text-xl sm:text-3xl">
-                            <li><a href="#" class="hover:text-white transition-colors">Beranda</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Cara Kerja</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Fitur Unggulan</a></li>
-                        </ul>
-                    </div>
+                <!-- Kolom 3: Layanan & Template -->
+                <nav aria-label="Navigasi Layanan dan Template" class="space-y-3">
+                    <h4 class="text-lg font-semibold text-white">Layanan & Template</h4>
+                    <ul class="space-y-2 text-lg text-slate-300">
+                        <li><a href="template-cv-ats.html" class="hover:text-white transition-colors">Template CV ATS</a></li>
+                        <li><a href="contohcvlolos.html" class="hover:text-white transition-colors">Contoh CV Lolos</a></li>
+                        <li><a href="panduankarier.html" class="hover:text-white transition-colors">Panduan Karier</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog / Tips CV</a></li>
+                    </ul>
+                </nav>
 
-                    <!-- Grup Menu 1 -->
-                    <div class="space-y-6">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Layanan dan Tamplate</h3>
-                        <ul class="space-y-4 text-slate-300 text-xl sm:text-3xl">
-                            <li><a href="#" class="hover:text-white transition-colors">Tamplate CV ATS</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Contoh CV Lolos</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Panduan Karier</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Blog / Tips CV</a></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Grup Menu 2 -->
-                    <div class="space-y-6">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Dukungan dan Bantuan</h3>
-                        <ul class="space-y-4 text-slate-300 text-xl sm:text-3xl">
-                            <li><a href="#" class="hover:text-white transition-colors">FAQ / Bantuan</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Hubungi kami</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Email Support</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <!-- Kolom 4: Dukungan & Bantuan -->
+                <nav aria-label="Navigasi Dukungan dan Bantuan" class="space-y-3">
+                    <h4 class="text-lg font-semibold text-white">Dukungan & Bantuan</h4>
+                    <ul class="space-y-2 text-lg text-slate-300">
+                        <li><a href="faq.html" class="hover:text-white transition-colors">FAQ / Bantuan</a></li>
+                        <li><a href="#hubungi-kami" class="hover:text-white transition-colors">Hubungi Kami</a></li>
+                        <li><a href="#email-support" class="hover:text-white transition-colors">Email Support</a></li>
+                        <li><a href="#instagram" class="hover:text-white transition-colors">Instagram</a></li>
+                    </ul>
+                </nav>
+            </section>
 
-            </div>
-
-            <!-- Garis Bawah / Copyright (Diperbesar juga teksnya) -->
-            <div class="border-t border-slate-800 pt-8 text-center text-slate-400 text-xl">
-                &copy; 2026 LolosATS.id. All rights reserved.
+            <!-- Copyright -->
+            <div class="border-t border-slate-800 pt-6 text-center">
+                <p class="text-lg text-slate-400">&copy; 2026 LolosATS.id. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        async function muatRiwayat() {
+    const list = document.getElementById('daftar-riwayat');
+    try {
+        const res = await fetch('http://localhost:3000/api/riwayat');
+        const data = await res.json();
+
+        if (data.length === 0) {
+            list.innerHTML = '<li class="text-center text-slate-500">Belum ada riwayat.</li>';
+            return;
+        }
+
+        list.innerHTML = '';
+        data.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'flex justify-between bg-brand-blue text-white p-4 rounded-xl';
+
+            const nama = document.createElement('span');
+            nama.textContent = item.namaFile;
+
+            const skor = document.createElement('strong');
+            skor.textContent = item.skorAts + '%';
+
+            li.append(nama, skor);
+            list.appendChild(li);
+        });
+    } catch (err) {
+        list.innerHTML = '<li class="text-center text-red-600">Gagal memuat riwayat.</li>';
+    }
+}
+muatRiwayat();
+        
     </script>
-    <!-- panggil sdk supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- panggil file config -->
-    <script src="js/supabaseClient.js"></script>
-    <!-- panggil file logika upload -->
-     <script src="js/cvUpload.js"></script>
 </body>
 </html>
