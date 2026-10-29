@@ -157,12 +157,16 @@
 <!-- Script Pendukung -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Pastikan baris ini berada di dalam tag script yang benar
         lucide.createIcons();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabaseClient.js"></script>
     <script src="js/cvUpload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Konfigurasi worker untuk PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
 </body>
 </html>
 </body>
