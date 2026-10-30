@@ -1,4 +1,5 @@
 # 📄 Dokumentasi Modul Upload - LolosATS.id
+# ini repo baru yang udah ada integrasi apinya 
 
 ## 1. Deskripsi Singkat
 Modul ini bertindak sebagai antarmuka utama pengguna untuk mengunggah file Curricula Vitae (CV) dalam format digital (`.pdf` / `.docx`) sebelum diproses oleh sistem analisis ATS. Halaman dirancang secara responsif, proporsional, dan terintegrasi langsung dengan penyimpanan cloud **Supabase Storage**.
